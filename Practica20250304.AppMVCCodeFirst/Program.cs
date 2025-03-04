@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using Practica20250304.AppMVCCodeFirst.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<ESFEDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Conn"));
+});
 
 var app = builder.Build();
 
